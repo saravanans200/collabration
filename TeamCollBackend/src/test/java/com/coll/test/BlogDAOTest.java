@@ -24,6 +24,7 @@ public class BlogDAOTest {
 		context.refresh();
 		blogDAO=(BlogDAO)context.getBean("blogDAO");
 	}
+
 	@Ignore
 	@Test
 	public void addblogtest() {
@@ -36,13 +37,13 @@ public class BlogDAOTest {
 		assertTrue("problem in adding blog",blogDAO.addBlog(blog));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void getblogtest() {
-		Blog blog=blogDAO.getBlog(523);
+		Blog blog=blogDAO.getBlog(563);
 		blog.getBlogName();
 		System.out.println(blog.getBlogName());
-		assertNotNull("problem in getting blog",blogDAO.getBlog(23));
+		assertNotNull("problem in getting blog",blogDAO.getBlog(563));
 	}
 
 	@Ignore
@@ -60,7 +61,7 @@ public class BlogDAOTest {
 		assertTrue("problem in deleting blog",blogDAO.deleteBlog(blog));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void listblogtest() {
 		List<Blog> listBlogs=blogDAO.getBlogs();
@@ -83,11 +84,15 @@ public class BlogDAOTest {
 	@Ignore
 	@Test
 	public void approveblogtest() {
-		assertTrue("problem in incrementing likes",blogDAO.approveBlog(1001));
+		Blog blog=blogDAO.getBlog(575);
+	assertTrue("problem in Approving Blog",blogDAO.approveBlog(blog));
 	}
+	
 	@Ignore
 	@Test
 	public void rejectblogtest() {
-		assertTrue("problem in incrementing likes",blogDAO.rejectBlog(1001));
+		Blog blog=blogDAO.getBlog(541);
+		assertTrue("problem in Rejecting Blog",blogDAO.rejectBlog(blog));
+
 	}
 }

@@ -91,19 +91,6 @@ public class BlogDAOImpl implements BlogDAO {
 		}
 	}
 
-	public boolean approveBlog(int blogId) {
-	
-		try {
-			Blog blog=getBlog(blogId);
-			blog.setStatus("A");
-			sessionFactory.getCurrentSession().update(blog);
-			return true;
-		}
-		catch(Exception e) {
-			return false;
-		}
-	}
-
 	public boolean rejectBlog(int blogId) {
 		
 		try {
@@ -116,6 +103,32 @@ public class BlogDAOImpl implements BlogDAO {
 			return false;
 		}
 
+	}
+
+	public boolean approveBlog(Blog blog) {
+		try
+		{
+			blog.setStatus("A");
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;	
+		}
+	}
+
+	public boolean rejectBlog(Blog blog) {
+		try
+		{
+			blog.setStatus("NA");
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;	
+		}
 	}
 	
 }
