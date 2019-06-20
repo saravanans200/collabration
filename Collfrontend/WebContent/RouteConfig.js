@@ -10,7 +10,9 @@ myApp.config(function($routeProvider)
 	.when("/contactus",{templateUrl:"pages/user_pages/Contact_us.html"})
 	.when("/blog",{templateUrl:"pages/blog_pages/blog.html"})
 	.when("/addBlog",{templateUrl:"pages/blog_pages/AddBlog.html"})
-	.when("/showBlog",{templateUrl:"pages/blog_pages/ShowBlog.html"});
+	.when("/showBlog",{templateUrl:"pages/blog_pages/ShowBlog.html"})
+	.when("/manageBlog",{templateUrl:"pages/blog_pages/ManageBlog.html"});
+	
 		});
 
 myApp.run(function($rootScope,$cookieStore)

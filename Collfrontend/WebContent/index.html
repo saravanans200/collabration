@@ -5,9 +5,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="RouteConfig.js"></script>
 <script src="UserController.js"></script>
 <script src="pages/blog_pages/BlogController.js"></script>
+<script src="pages/blog_pages/BlogCommentController.js"></script>
 
 <!-- Bootstrap CDN here -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -45,14 +47,21 @@
         <li ng-show="currentUser==undefined"><a href="#/contactus">Contact Us</a></li>
         
         
-        
-        
+        <div ng-hide="currentUser==undefined" ng-controller="UserController">
+        <img src="http://localhost:8080/CollMiddleware/getImage/{{currentUser.username}}" width="20" height="20"/>
+        <font color="black" face="calibri" size="2">
+        welcome {{currentUser.username}}
+        </font>
+        <span>
+        <a href="" ng-click="logout()">logout<span class="glyphicon glyphicon-log-out"> </span></a>
+        </span>
+              
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#/addBlog" ng-show="currentUser.role=='ROLE_USER'">Add Blog</a></li>
             <li><a href="#/showBlog">Show Blog</a></li>
-            <li><a href="#" ng-show="currentUser.role=='ROLE_ADMIN'">Manage Blog</a></li>
+            <li><a href="#/manageBlog" ng-show="currentUser.role=='ROLE_ADMIN'">Manage Blog</a></li>
             <!-- <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
@@ -61,14 +70,8 @@
             
           </ul>
         </li>
-        <div ng-hide="currentUser==undefined" ng-controller="UserController">
-        <img src="" width="20" height="20"/>
-        <font color="black" face="calibri" size="2">
-        welcome {{currentUser.username}}
-        </font>
-        <a href="" ng-click="logout()">logout<span class="glyphicon glyphicon-log-out"> </span></a>
-        
-        </div>  
+        <li ng-hide="currentUser==Undefined"><a href="#/profileUpload">Profile Update</a></li> 
+        </div> 
                                          
       </ul>
  </div>

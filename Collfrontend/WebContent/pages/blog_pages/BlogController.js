@@ -9,7 +9,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	$scope.addBlog=function()
 	{
 		$scope.blog.username=$rootScope.currentUser.username;
-		$http.post('http://localhost:8091/CollMiddleware/addBlog',$scope.blog)
+		$http.post('http://localhost:8080/CollMiddleware/addBlog',$scope.blog)
 		.then(function(response)
 		{
 			console.log('Blog Added');
@@ -28,8 +28,9 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	{
 		console.log('List Blog Method');
 		
-		$http.get('http://localhost:8091/CollMiddleware/showAllBlogs')
-		.then(function(response){
+		$http.get('http://localhost:8080/CollMiddleware/showAllBlogs')
+		.then(function(response)
+				{
 			console.log('Showing all the Blog');
 			$scope.blogdata=response.data;
 		},
@@ -42,83 +43,66 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	
 	$scope.incrementLikes=function(blogid)
 	{
-		console.log('Incremented Likes');
-		$http.get('http://localhost:8091/CollMiddleware/incrementLikes/'+blogid)
-		.then(function(response)
-		{
-			listBlogs();
-			$location.path("/showBlog");
-		},
-		function(errresponse){
-			console.log('Error Occured');
-		});
+		$http.get('http://localhost:8080/CollMiddleware/incrementLikes/'+blogid)
+		.then(function(response) {
+			 console.log("Incremented Likes");
+			 listBlogs();
+			 $location.path("/showBlog");
+		 },
+		 function(errresponse) {
+			 console.log("Error Incrementing Likes");
+		 });
 		
 	}
 	$scope.incrementDisLikes=function(blogid)
 	{
-		console.log('Incremented dislikes');
-		$http.get('http://localhost:8091/CollMiddleware/incrementDisLikes/'+blogid)
-		.then(function(response)
-		{
-			listBlogs();
-			$location.path("/showBlog");
-		},
-		function(errresponse){
-			console.log('Error Occured');
-		});
+		$http.get('http://localhost:8080/CollMiddleware/incrementDisLikes/'+blogid)
+		.then(function(response) {
+			 console.log("Incremented Dislikes");
+			 listBlogs();
+			 $location.path("/showBlog");
+		 },
+		 function(errresponse) {
+			 console.log("Error Incrementing Dislikes");
+		 });
 		
 	}
 	$scope.deleteBlog=function(blogid)
 	{
-		console.log('Blog Deleted');
-		$http.get('http://localhost:8091/CollMiddleware/deleteBlog/'+blogid)
-		.then(function(response)
-				{
-			listBlogs();
-			alert('Blog Deleted');
-			$location.path("/showBlog");
-				},
-				function(errresponse)
-				{
-					console.log('Error Occured');
-					alert('Error Occured while Deleting Blog');
-			
-				});	
+		$http.get('http://localhost:8080/CollMiddleware/deleteBlog/'+blogid)
+		.then(function(response) {
+			 console.log("Blog deleted");
+			 listBlogs();
+			 $location.path("/showBlog");
+		 },
+		 function(errresponse) {
+			 console.log("Error deleting Blog");
+		 });
 	}
 	$scope.approve=function(blogid)
 	{
-		console.log('Blog Approved');
-		$http.get('http://localhost:8091/CollMiddleware/approveBlog/'+blogid)
-		.then(function(response)
-				{
-			listBlogs();
-			alert('Blog Approved');
-			$location.path("/adminBlog");
-				},
-				function(errresponse)
-				{
-					console.log('Error Occured');
-					alert('Error Occured while Approving Blog');
-			
-				});	
+		$http.get('http://localhost:8080/CollMiddleware/approveBlog/'+blogid)
+		 .then(function(response) {
+			 console.log("Blog approved");
+			 listBlogs();
+			 $location.path("/manageBlog");
+		 },
+		 function(errresponse) {
+			 console.log("Error approving Blog");
+		 });
 	}
 	
 	$scope.reject=function(blogid)
 	{
-		console.log('Blog Rejected');
-		$http.get('http://localhost:8091/CollMiddleware/rejectBlog/'+blogid)
-		.then(function(response)
-				{
-			listBlogs();
-			alert('Blog Rejected');
-			$location.path("/adminBlog");
-				},
-				function(errresponse)
-				{
-					console.log('Error Occured');
-					alert('Error Occured while Rejecting Blog');
-			
-				});	
+		$http.get('http://localhost:8080/CollMiddleware/rejectBlog/'+blogid)
+		.then(function(response) {
+			 console.log("Blog rejected");
+			 listBlogs();
+			 $location.path("/manageBlog");
+		 },
+		 function(errresponse) {
+			 console.log("Error rejecting Blog");
+		 });
 	}
 	$scope.editBlog=function(blogid)
 	{
@@ -126,15 +110,38 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 		$rootScope.blogid=blogid;
 		$location.path("/updateBlog");
 	}
+	
 	function getBlog()
 	{
-		console.log('getting a Blog');
-		$http.get('http://localhost:8091/CollMiddleware/getBlog/'+$rootScope.blogid)
+		$http.get('http://localhost:8080/CollMiddleware/getBlog/'+$rootScope.blogid)
+		.then(function(response) {
+			$scope.blog=response.data;
+			console.log("getting blog");
+		},
+		function(errresponse)
+		{
+			console.log("error getting blog");
+		});
+	}
+	
+	$scope.updateBlog=function()
+	{
+		console.log('I am in update blog');
+		$http.post('http://localhost:8080/CollMiddleware/updateBlog',$scope.blog)
 		.then(function(response)
 				{
-			
-					$scope.blog=response.data;
+					alert("Blog is updated");
+				},
+				function(errresponse)
+				{
+					alert("Error Occured");
 				});
+	}
+	$scope.showComment=function(blogid)
+	{
+		console.log('I am in show comment');
+		$rootScope.blogid=blogid;
+		$location.path("/showBlogComment");
 	}
 	getBlog();
 	
