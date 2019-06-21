@@ -67,7 +67,7 @@ public class BlogRestController
 	@PostMapping(value="/updateBlog",produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> updateBlog(@RequestBody Blog blog)
 	{
-		Blog blog1=(Blog)blogDAO.getBlog(blog.getBlogId());
+		Blog blog1=(Blog)blogDAO.getBlog(blog.getBlogid());
 		blog.setCreateDate(blog1.getCreateDate());
 		blog.setDislikes(blog1.getDislikes());
 		blog.setLikes(blog1.getLikes());
@@ -99,8 +99,8 @@ public class BlogRestController
 			return new ResponseEntity<String>("Failure",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping(value="/approveBlog/{blogId}",produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> approveBlog(@PathVariable("blogId")int blogid)
+	@GetMapping(value="/approveBlog/{blogid}",produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> approveBlog(@PathVariable("blogid")int blogid)
 	{
 		Blog blog=(Blog)blogDAO.getBlog(blogid);
 		if(blogDAO.approveBlog(blog))
@@ -111,8 +111,8 @@ public class BlogRestController
 			return new ResponseEntity<String>("Failure",HttpStatus.INTERNAL_SERVER_ERROR);				
 	}
 	
-	@GetMapping(value="/rejectBlog/{blogId}",produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> rejectBlog(@PathVariable("blogId")int blogid)
+	@GetMapping(value="/rejectBlog/{blogid}",produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> rejectBlog(@PathVariable("blogid")int blogid)
 	{
 		Blog blog=(Blog)blogDAO.getBlog(blogid);
 		
@@ -124,11 +124,11 @@ public class BlogRestController
 			return new ResponseEntity<String>("Failure",HttpStatus.INTERNAL_SERVER_ERROR);				
 	}
 	
-	@GetMapping(value="/incrementLikes/{blogId}",produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> incrementLikes(@PathVariable("blogId")int blogId)
+	@GetMapping(value="/incrementLikes/{blogid}",produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> incrementLikes(@PathVariable("blogid")int blogid)
 	
 	{
-		if(blogDAO.incrementLikes(blogId))
+		if(blogDAO.incrementLikes(blogid))
 		{
 			return new ResponseEntity<String>("Incremented likes",HttpStatus.OK);
 		}
@@ -136,11 +136,11 @@ public class BlogRestController
 			return new ResponseEntity<String>("Failure",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping(value="/incrementDisLikes/{blogId}",produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> incrementDisLikes(@PathVariable("blogId")int blogId)
+	@GetMapping(value="/incrementDisLikes/{blogid}",produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> incrementDisLikes(@PathVariable("blogid")int blogid)
 	
 	{
-		if(blogDAO.incrementDislikes(blogId))
+		if(blogDAO.incrementDislikes(blogid))
 		{
 			return new ResponseEntity<String>("Incremented Dislikes",HttpStatus.OK);
 		}
