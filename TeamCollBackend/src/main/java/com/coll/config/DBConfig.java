@@ -35,6 +35,7 @@ import com.coll.model.Forum;
 import com.coll.model.ForumComment;
 import com.coll.model.Friend;
 import com.coll.model.Job;
+import com.coll.model.Message;
 import com.coll.model.ProfilePicture;
 import com.coll.model.UserDetail;
 
@@ -74,6 +75,7 @@ public class DBConfig {
 		factory.addAnnotatedClass(Friend.class);
 		factory.addAnnotatedClass(Job.class);
 		factory.addAnnotatedClass(ProfilePicture.class);
+		factory.addAnnotatedClass(Message.class);
 		
 		System.out.println(">>>>>>SessionFactory Object created<<<<<<");
 

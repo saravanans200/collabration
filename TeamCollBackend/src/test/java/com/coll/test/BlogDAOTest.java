@@ -66,7 +66,7 @@ public class BlogDAOTest {
 	public void listblogtest() {
 		List<Blog> listBlogs=blogDAO.getBlogs();
 		for(Blog blog:listBlogs) {
-			System.out.println("id:"+blog.getBlogId());
+			System.out.println("id:"+blog.getBlogid());
 		}
 	}
 	

@@ -23,15 +23,17 @@ static FriendDAO friendDAO;
 		context.refresh();
 		friendDAO=(FriendDAO)context.getBean("friendDAO");
 	}
-	@Ignore
+	
+	
 	@Test
 	public void sendFriendRequestTest()
 	{
 		Friend friend=new Friend();
 		
-		friend.setUsername("Saravana");
-		friend.setFriendName("gowshik");
-		assertTrue("Problem in sending Friend Request",friendDAO.sendFriendRequest(friend));
+		friend.setUsername("bhargavi");
+		friend.setFriendName("Saravana");
+		
+		assertTrue("problem in sending Friend Request",friendDAO.sendFriendRequest(friend));
 	}
 	@Ignore
 	@Test
@@ -44,12 +46,12 @@ static FriendDAO friendDAO;
 	@Test
 	public void showFriendListTest()
 	{
-		List<Friend> friendList=friendDAO.showFriendList("sara");
+		List<Friend> friendList=friendDAO.showFriendList("Saravana");
 		assertTrue("Problem in showing Friend Request:",friendList.size()>0);
 		
 		for(Friend friend:friendList)
 		{
-			System.out.println(friend.getUsername()+":::");
+			System.out.println(friend.getUsername()+":");
 			System.out.println(friend.getFriendName());
 		}
 	}
@@ -58,7 +60,7 @@ static FriendDAO friendDAO;
 	@Test
 	public void ShowPendingFriendListTest() 
 	{
-		List<Friend> pendingFriendList=friendDAO.showPendingFriendRequest("Saravana");
+		List<Friend> pendingFriendList=friendDAO.showPendingFriendList("Saravana");
 		assertTrue("Problem in showing pending Friend List",pendingFriendList.size()>0);
 		
 		for(Friend friend:pendingFriendList)
@@ -66,6 +68,7 @@ static FriendDAO friendDAO;
 			System.out.println(friend.getUsername());
 		}
 	}
+	
 	
 	@Test
 	public void showsuggestedfriendstest() {

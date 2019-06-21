@@ -7,7 +7,7 @@ import com.coll.model.UserDetail;
 
 public interface FriendDAO {
 	public List<Friend> showFriendList(String username);
-	public List<Friend> showPendingFriendRequest(String username);
+	public List<Friend> showPendingFriendList(String username);
 	public List<UserDetail> showSuggestedFriend(String username);
 	
 	public boolean sendFriendRequest(Friend friend);

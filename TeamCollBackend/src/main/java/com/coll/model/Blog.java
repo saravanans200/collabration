@@ -19,7 +19,7 @@ public class Blog {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="blogid")
 	@SequenceGenerator(name="blogid",allocationSize=1,sequenceName="blogid_seq")
-	private int blogId;
+	private int blogid;
 	private String blogName;
 	private String blogContent;
 	private String username;
@@ -30,12 +30,12 @@ public class Blog {
 	private int dislikes;
 	
 	
-	public int getBlogId() {
-		return blogId;
+	public int getBlogid() {
+		return blogid;
 	}
 
-	public void setBlogId(int blogId) {
-		this.blogId = blogId;
+	public void setBlogid(int blogid) {
+		this.blogid = blogid;
 	}
 	public String getBlogName() {
 		return blogName;
