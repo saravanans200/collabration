@@ -94,7 +94,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	
 	$scope.reject=function(blogid)
 	{
-		$http.get('http://localhost:8080/CollMiddleware/rejectBlog/'+blogid)
+		$http.get('http://localhost:8080/CollMiddleware/rejectBlog/'+$rootScope.blogid)
 		.then(function(response) {
 			 console.log("Blog rejected");
 			 listBlogs();
@@ -116,6 +116,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 		$http.get('http://localhost:8080/CollMiddleware/getBlog/'+$rootScope.blogid)
 		.then(function(response) {
 			$scope.blog=response.data;
+	console.log($scope.blog);		
 			console.log("getting blog");
 		},
 		function(errresponse)
