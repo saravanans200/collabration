@@ -19,6 +19,9 @@
 <script src="pages/friend_pages/FriendController.js"></script>
 <script src="pages/chat_pages/ChatController.js"></script>
 <script src="pages/chat_pages/ChatService.js"></script>
+<script src="pages/job_pages/JobContoller.js"></script>
+<script src="pages/forum_pages/ForumCommentContoller.js"></script>
+<script src="pages/forum_pages/ForumContoller.js"></script>
 
 <!-- Bootstrap CDN here -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -64,9 +67,23 @@
           <a class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
           <ul class="dropdown-menu">
           <li><a href="#/showBlog">Show Blog</a></li>
-          
           </ul>
           </li>
+          
+          <li ng-show="currentUser==undefined" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Forum <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <li><a href="#/showForum">Show Forum </a></li>
+          </ul>
+          </li>
+          
+           <li ng-show="currentUser==undefined" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Job <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <li><a href="#/showJob">show Job </a></li>
+          </ul>
+          </li>
+          
                  
         
         <div ng-hide="currentUser==undefined" >
@@ -84,6 +101,35 @@
             <li><a href="#/addBlog" ng-show="currentUser.role=='ROLE_USER'">Add Blog</a></li>
             <li><a href="#/showBlog">Show Blog</a></li>
             <li><a href="#/manageBlog" ng-show="currentUser.role=='ROLE_ADMIN'">Manage Blog</a></li>
+            <!-- <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+            
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Forum <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <li><a href="#/addForum" ng-show="currentUser.role=='ROLE_USER'">Add Forum</a></li>
+            <li><a href="#/showForum">Show Forum</a></li>
+            <li><a href="#/manageForum" ng-show="currentUser.role=='ROLE_ADMIN'">Manage Form</a></li>
+            <!-- <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+            
+          </ul>
+        </li>
+        
+         <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Job <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/job">Job</a></li>
+             <li><a href="#/showJob" ng-show="currentUser.role=='ROLE_ADMIN'">Show Job</a></li>
             <!-- <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>

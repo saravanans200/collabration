@@ -18,7 +18,16 @@ myApp.config(function($routeProvider)
 	
 	.when("/chat",{templateUrl:"pages/chat_pages/Chat.html"})
 	
-	.when("/friend",{templateUrl:"pages/friend_pages/Friend.html"});
+	.when("/friend",{templateUrl:"pages/friend_pages/Friend.html"})
+	
+	.when("/showForum",{templateUrl:"pages/forum_pages/Forum.html"})
+	.when("/addForum",{templateUrl:"pages/blog_pages/AddForum.html"})
+	.when("/manageForum",{templateUrl:"pages/forum_pages/ManageForum.html"})
+	.when("/updateForum",{templateUrl:"pages/forum_pages/updateForum.html"})
+	.when("/forumComment",{templateUrl:"pages/forum_pages/ForumComment.html"})
+	
+	.when("/job",{templateUrl:"pages/job_pages/job.html"})
+	.when("/showJob",{templateUrl:"pages/job_pages/showJob.html"});
 	
 		});
 
