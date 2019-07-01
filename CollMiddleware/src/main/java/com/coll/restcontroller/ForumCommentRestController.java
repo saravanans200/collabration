@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,43 +23,62 @@ public class ForumCommentRestController {
 	@Autowired
 	ForumCommentDAO forumcommentDAO;
 	
-	@GetMapping("/getForumComments")
-	public ResponseEntity<List<ForumComment>> getForumComments() 
+
+	@GetMapping("/showAllForumComments")
+	public ResponseEntity<List<ForumComment>> showAllForums()
 	{
-		List<ForumComment> listForumComments=forumcommentDAO.getForumComments();
-		if(listForumComments.size()>0) {
-			return new ResponseEntity<List<ForumComment>>(listForumComments,HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<List<ForumComment>>(listForumComments,HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	@GetMapping("/getForumComment/{commentId}")
-	public ResponseEntity<ForumComment> getForumComment(@PathVariable("commentId") int commentId)
-	{
-		ForumComment forumcomment=forumcommentDAO.getForumComment(commentId);
-		return new ResponseEntity<ForumComment>(forumcomment,HttpStatus.OK);
-	}
-	
-	@PostMapping("/addForumComment")
-	public ResponseEntity<String> addForumComment(@RequestBody ForumComment forumcomment)
-	{
-		forumcomment.setForumId(6);
-		forumcomment.setForumComment("good");
-		forumcomment.setCommentDate(new java.util.Date());
-		forumcomment.setUsername("Saravana");
-		if (forumcommentDAO.addForumComment(forumcomment))
+		List<ForumComment> listForumComment=forumcommentDAO.getForumComments();
+		
+		if(listForumComment.size()>0)
 		{
-		return new ResponseEntity<String>("Forum added",HttpStatus.OK);
+			return new ResponseEntity<List<ForumComment>>(listForumComment,HttpStatus.OK);
 		}
 		else
 		{
-			return new ResponseEntity<String>("Error adding forum",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<ForumComment>>(listForumComment,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	@GetMapping("/listForumComments/{forumId}")
+	public ResponseEntity<List<ForumComment>> listForumComments(@PathVariable("forumId")int forumId)
+	{
+		List<ForumComment> listForums=forumcommentDAO.listForumComments(forumId);
+		
+		if(listForums.size()>0)
+		{
+			return new ResponseEntity<List<ForumComment>>(listForums,HttpStatus.OK);
 		}
-	
-	@DeleteMapping("/deleteForumComment/{commentId}")
+		else
+		{
+			return new ResponseEntity<List<ForumComment>>(listForums,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@GetMapping("/getForumComment/{commentId}")
+
+		public ResponseEntity<ForumComment> getForum(@PathVariable("commentId")int commentId)
+		{
+		ForumComment forumcomment=(ForumComment)forumcommentDAO.getForumComment(commentId);
+		
+		return new ResponseEntity<ForumComment>(forumcomment,HttpStatus.OK);
+		}
+
+	@PostMapping(value="/addForumComment",produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> addForumComment(@RequestBody ForumComment forumComment)
+	{
+
+		forumComment.setCommentDate(new java.util.Date());
+		
+		
+		
+		if(forumcommentDAO.addForumComment(forumComment))
+		{
+			return new ResponseEntity<String>("Forum comment Added",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("Failure",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@DeleteMapping(value="/deleteForumComment/{commentId}",produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> deleteForumComment(@PathVariable("commentId")int commentId)
 	{
 		ForumComment forumcomment=(ForumComment)forumcommentDAO.getForumComment(commentId);
@@ -70,8 +90,8 @@ public class ForumCommentRestController {
 		else
 			return new ResponseEntity<String>("Failure",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	@PutMapping("/updateForumComment/{commentId}")
+
+	@PutMapping(value="/updateForumComment/{commentId}",produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> updateForum(@PathVariable("commentId")int commentId)
 	{
 		ForumComment forumcomment=(ForumComment)forumcommentDAO.getForumComment(commentId);
@@ -86,7 +106,5 @@ public class ForumCommentRestController {
 			return new ResponseEntity<String>("Failure",HttpStatus.NOT_FOUND);
 		}
 	}
-	
 	}
-	
 	
