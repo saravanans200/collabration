@@ -95,6 +95,25 @@
             animation-delay: 1.8s;
         }
         
+         .nav-list li:nth-child(7) {
+            animation-delay: 2.1s;
+        }
+        
+         .nav-list li:nth-child(8) {
+            animation-delay: 2.4s;
+        }
+         .nav-list li:nth-child(9) {
+            animation-delay: 2.7s;
+        }
+         .nav-list li:nth-child(10) {
+            animation-delay: 3.0s;
+        }
+        .nav-list li:nth-child(11) {
+            animation-delay: 3.3s;
+        }
+        .nav-list li:nth-child(12) {
+            animation-delay: 3.6s;
+        }
 
         /* Animation */
 

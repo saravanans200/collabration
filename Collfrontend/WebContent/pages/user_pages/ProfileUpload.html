@@ -7,14 +7,23 @@
 				<hr class="hr-or">
 				<span class="span-or"></span>
 			</div>
-			<form method="post" role="form" action="http://localhost:8080/CollMiddleware/doUpload" enctype="multipart/form-data">
+			<script>
+function myFunction() {
+  action="http://localhost:8090/CollMiddleware/doUpload";
+  
+}
+</script>
+			<form method="post" role="form" href="#/profileUpload" action="http://localhost:8090/CollMiddleware/doUpload" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="inputUsernameEmail"> Picture</label>
 					<input type="file" class="file" name="file" required>					
 				</div>
 				<input type="submit" class="btn btn btn-primary" value="Upload"/>
 				
+				
 			</form>
+			
+
 		</div>
 	</div>
 </div>

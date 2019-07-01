@@ -11,7 +11,7 @@ myApp.controller("BlogCommentController",function($scope,$location,$rootScope,$h
 			function loadBlog()
 			{
 				console.log('getting a Blog');
-				$http.get('http://localhost:8080/CollMiddleware/getBlog/'+$rootScope.blogid)
+				$http.get('http://localhost:8090/CollMiddleware/getBlog/'+$rootScope.blogid)
 				.then(function(response)
 						{
 							
@@ -21,7 +21,7 @@ myApp.controller("BlogCommentController",function($scope,$location,$rootScope,$h
 			
 			function loadBlogComments()
 			{
-				$http.get('http://localhost:8080/CollMiddleware/showAllBlogComments')
+				$http.get('http://localhost:8090/CollMiddleware/showAllBlogComments')
 				.then(function(response)
 						{
 							
@@ -33,7 +33,7 @@ myApp.controller("BlogCommentController",function($scope,$location,$rootScope,$h
 				console.log('I am in add comment');
 				$scope.comment.blogid=$scope.blog.blogid;
 				$scope.comment.username=$rootScope.currentUser.username;
-				$http.post('http://localhost:8080/CollMiddleware/addBlogComment',$scope.comment)
+				$http.post('http://localhost:8090/CollMiddleware/addBlogComment',$scope.comment)
 				.then(function(response)
 						{
 							loadBlogComments();

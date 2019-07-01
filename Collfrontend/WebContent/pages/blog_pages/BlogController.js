@@ -9,7 +9,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	$scope.addBlog=function()
 	{
 		$scope.blog.username=$rootScope.currentUser.username;
-		$http.post('http://localhost:8080/CollMiddleware/addBlog',$scope.blog)
+		$http.post('http://localhost:8090/CollMiddleware/addBlog',$scope.blog)
 		.then(function(response)
 		{
 			console.log('Blog Added');
@@ -28,7 +28,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	{
 		console.log('List Blog Method');
 		
-		$http.get('http://localhost:8080/CollMiddleware/showAllBlogs')
+		$http.get('http://localhost:8090/CollMiddleware/showAllBlogs')
 		.then(function(response)
 				{
 			console.log('Showing all the Blog');
@@ -43,7 +43,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	
 	$scope.incrementLikes=function(blogid)
 	{
-		$http.get('http://localhost:8080/CollMiddleware/incrementLikes/'+blogid)
+		$http.get('http://localhost:8090/CollMiddleware/incrementLikes/'+blogid)
 		.then(function(response) {
 			 console.log("Incremented Likes");
 			 listBlogs();
@@ -56,7 +56,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	}
 	$scope.incrementDisLikes=function(blogid)
 	{
-		$http.get('http://localhost:8080/CollMiddleware/incrementDisLikes/'+blogid)
+		$http.get('http://localhost:8090/CollMiddleware/incrementDisLikes/'+blogid)
 		.then(function(response) {
 			 console.log("Incremented Dislikes");
 			 listBlogs();
@@ -69,7 +69,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	}
 	$scope.deleteBlog=function(blogid)
 	{
-		$http.get('http://localhost:8080/CollMiddleware/deleteBlog/'+blogid)
+		$http.get('http://localhost:8090/CollMiddleware/deleteBlog/'+blogid)
 		.then(function(response) {
 			 console.log("Blog deleted");
 			 listBlogs();
@@ -81,7 +81,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	}
 	$scope.approve=function(blogid)
 	{
-		$http.get('http://localhost:8080/CollMiddleware/approveBlog/'+blogid)
+		$http.get('http://localhost:8090/CollMiddleware/approveBlog/'+blogid)
 		 .then(function(response) {
 			 console.log("Blog approved");
 			 listBlogs();
@@ -94,7 +94,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	
 	$scope.reject=function(blogid)
 	{
-		$http.get('http://localhost:8080/CollMiddleware/rejectBlog/'+$rootScope.blogid)
+		$http.get('http://localhost:8090/CollMiddleware/rejectBlog/'+$rootScope.blogid)
 		.then(function(response) {
 			 console.log("Blog rejected");
 			 listBlogs();
@@ -113,7 +113,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	
 	function getBlog()
 	{
-		$http.get('http://localhost:8080/CollMiddleware/getBlog/'+$rootScope.blogid)
+		$http.get('http://localhost:8090/CollMiddleware/getBlog/'+$rootScope.blogid)
 		.then(function(response) {
 			$scope.blog=response.data;
 	console.log($scope.blog);		
@@ -128,7 +128,7 @@ myApp.controller("BlogController",function($scope,$location,$rootScope,$http)
 	$scope.updateBlog=function()
 	{
 		console.log('I am in update blog');
-		$http.post('http://localhost:8080/CollMiddleware/updateBlog',$scope.blog)
+		$http.post('SupdateBlog',$scope.blog)
 		.then(function(response)
 				{
 					alert("Blog is updated");

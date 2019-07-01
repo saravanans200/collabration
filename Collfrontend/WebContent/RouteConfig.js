@@ -4,9 +4,10 @@ myApp.config(function($routeProvider)
 		{
 	
 	$routeProvider
-	.when("/index",{templateUrl:"/index.html"})
+	.when("/index",{templateUrl:"index.html"})
 	.when("/login",{templateUrl:"pages/user_pages/Login.html"})
 	.when("/register",{templateUrl:"pages/user_pages/Register.html"})
+	.when("/aboutus",{templateUrl:"pages/user_pages/About_us.html"})
 	.when("/contactus",{templateUrl:"pages/user_pages/Contact_us.html"})
 	.when("/profileUpload",{templateUrl:"pages/user_pages/ProfileUpload.html"})
 	
@@ -20,11 +21,14 @@ myApp.config(function($routeProvider)
 	
 	.when("/friend",{templateUrl:"pages/friend_pages/Friend.html"})
 	
-	.when("/showForum",{templateUrl:"pages/forum_pages/Forum.html"})
-	.when("/addForum",{templateUrl:"pages/blog_pages/AddForum.html"})
+	.when("/showForum",{templateUrl:"pages/forum_pages/ShowForum.html"})
+	.when("/addForum",{templateUrl:"pages/forum_pages/AddForum.html"})
 	.when("/manageForum",{templateUrl:"pages/forum_pages/ManageForum.html"})
 	.when("/updateForum",{templateUrl:"pages/forum_pages/updateForum.html"})
 	.when("/forumComment",{templateUrl:"pages/forum_pages/ForumComment.html"})
+	.when("/showForumComment",{templateUrl:"pages/forum_pages/ForumComment.html"})
+	
+	
 	
 	.when("/job",{templateUrl:"pages/job_pages/job.html"})
 	.when("/showJob",{templateUrl:"pages/job_pages/showJob.html"});

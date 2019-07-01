@@ -6,7 +6,7 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	    $scope.suggestedFriends;
 		
 	    function showFriends() {
-	    	 $http.get('http://localhost:8080/CollMiddleware/showAllFriends/'+$rootScope.currentUser.username)
+	    	 $http.get('http://localhost:8090/CollMiddleware/showAllFriends/'+$rootScope.currentUser.username)
 	    	 .then(function(response) {
 	    		 console.log("Showing Friends");
 	    		 $scope.showFriends=response.data;
@@ -18,7 +18,7 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	    }
 	    
 	    function friendRequests() {
-	    	 $http.get('http://localhost:8080/CollMiddleware/showPendingFriendList/'+$rootScope.currentUser.username)
+	    	 $http.get('http://localhost:8090/CollMiddleware/showPendingFriendList/'+$rootScope.currentUser.username)
 	    	 .then(function(response) {
 	    		 console.log("Showing Friend Requests");
 	    		 $scope.friendRequests=response.data;
@@ -30,7 +30,7 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	    }
 	    
 	    function suggestedFriends() {
-	    	 $http.get('http://localhost:8080/CollMiddleware/showSuggestedFriendList/'+$rootScope.currentUser.username)
+	    	 $http.get('http://localhost:8090/CollMiddleware/showSuggestedFriendList/'+$rootScope.currentUser.username)
 	    	 .then(function(response) {
 	    		 console.log("Showing Suggested Friends");
 	    		 $scope.suggestedFriends=response.data;
@@ -43,7 +43,7 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	    
 	    $scope.acceptRequest=function(friendId) 
 	    {
-	      	 $http.get('http://localhost:8080/CollMiddleware/acceptFriendRequest/'+friendId)
+	      	 $http.get('http://localhost:8090/CollMiddleware/acceptFriendRequest/'+friendId)
 	      	 .then(function(response)
 	      	{
 	      		 console.log("Friend accepted");
@@ -56,9 +56,11 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	      	 }); 		
 	      }
 	    
+	   
+	    
 	    $scope.unfriend=function(friendId)
 	    {
-	   	 $http.get('http://localhost:8080/CollMiddleware/deleteFriendRequest/'+friendId)
+	   	 $http.get('http://localhost:8090/CollMiddleware/deleteFriendRequest/'+friendId)
 	   	 .then(function(response) {
 	   		 console.log("Friend removed");
 	   		 friendRequests();
@@ -70,7 +72,7 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	   }
 	   
 	    $scope.deleteFriend=function(friendId) {
-	    	 $http.get('http://localhost:8080/CollMiddleware/deleteFriendRequest/'+friendId)
+	    	 $http.get('http://localhost:8090/CollMiddleware/deleteFriendRequest/'+friendId)
 	    	 .then(function(response) {
 	    		 console.log("Friend removed");
 	    		 showFriends();
@@ -88,7 +90,7 @@ myApp.controller("FriendController",function($scope,$location,$rootScope,$http)
 	    	 
 	    	 $scope.friend.status="NA";
 	    	 
-	    	 $http.post('http://localhost:8080/CollMiddleware/sendFriendRequest',$scope.friend)
+	    	 $http.post('http://localhost:8090/CollMiddleware/sendFriendRequest',$scope.friend)
 	    	 .then(function(response) {
 	    		 console.log("Friend request sent");
 	    		 alert('Request sent');

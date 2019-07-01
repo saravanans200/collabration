@@ -2,7 +2,7 @@ myApp.service('chatService',function($q,$timeout)
 {
 	console.log('Starting Service');
 	
-	var base_url="http://localhost:8080/CollMiddleware";
+	var base_url="http://localhost:8090/CollMiddleware";
 	
 	var service={},listener=$q.defer(),socket={client:null,stomp:null},messageIds=[];
 	

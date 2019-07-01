@@ -6,7 +6,7 @@ myApp.controller("UserController",function($scope,$location,$rootScope,$http,$co
 	
 	$scope.checkUser=function()
 	{
-		 $http.post('http://localhost:8080/CollMiddleware/checkuser',JSON.stringify($scope.userDetail))
+		 $http.post('http://localhost:8090/CollMiddleware/checkuser',JSON.stringify($scope.userDetail))
 		.then(function(response)
 		{
 			console.log('Logged In');
@@ -24,6 +24,8 @@ myApp.controller("UserController",function($scope,$location,$rootScope,$http,$co
 		});
 		
 	}
+	
+	
 	$scope.register=function()
 	{
 		$scope.userDetail.role='ROLE_USER';
@@ -31,7 +33,7 @@ myApp.controller("UserController",function($scope,$location,$rootScope,$http,$co
 		$scope.userDetail.isOnline='N';
 		
 		
-		$http.post('http://localhost:8080/CollMiddleware/registerUser',JSON.stringify($scope.userDetail))
+		$http.post('http://localhost:8090/CollMiddleware/registerUser',JSON.stringify($scope.userDetail))
 		.then(function(response)
 		{
 			console.log('User is registered');
