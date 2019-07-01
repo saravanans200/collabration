@@ -68,4 +68,12 @@ public class ForumCommentDAOImpl implements ForumCommentDAO{
 		return listComments;
 	}
 
+	public List<ForumComment> listForumComments(int forumId) {
+		Session session=sessionFactory.openSession();
+	    Query query=session.createQuery("from ForumComment where forumid=:forumId");
+	    query.setParameter("forumId", forumId);
+	    List<ForumComment> listComments=query.list();
+	    return listComments;
+	}
+
 }

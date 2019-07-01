@@ -11,8 +11,8 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Job {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="jobid")
-	@SequenceGenerator(name="jobid",allocationSize=1,sequenceName="jobidseq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="jobId")
+	@SequenceGenerator(name="jobId",allocationSize=1,sequenceName="jobIdseq")
 	private int jobId;
 	private String jobDesignation;
 	private String companyName;

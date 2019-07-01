@@ -13,6 +13,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.coll.dao.ApplyjobDAO;
+import com.coll.dao.ApplyjobDAOImpl;
 import com.coll.dao.BlogCommentDAO;
 import com.coll.dao.BlogCommentDAOImpl;
 import com.coll.dao.BlogDAO;
@@ -29,6 +31,7 @@ import com.coll.dao.ProfilePictureDAO;
 import com.coll.dao.ProfilePictureDAOImpl;
 import com.coll.dao.UserDetailDAO;
 import com.coll.dao.UserDetailDAOImpl;
+import com.coll.model.Applyjob;
 import com.coll.model.Blog;
 import com.coll.model.BlogComment;
 import com.coll.model.Forum;
@@ -76,6 +79,8 @@ public class DBConfig {
 		factory.addAnnotatedClass(Job.class);
 		factory.addAnnotatedClass(ProfilePicture.class);
 		factory.addAnnotatedClass(Message.class);
+		factory.addAnnotatedClass(Applyjob.class);
+		
 		
 		System.out.println(">>>>>>SessionFactory Object created<<<<<<");
 
@@ -119,5 +124,9 @@ public JobDAO getJobDAO() {
 @Bean(name="profilePictureDAO")
 public ProfilePictureDAO getProfilePicture() {
 	return new ProfilePictureDAOImpl();
+}
+@Bean(name="applyjobDAO")
+public ApplyjobDAO getApplyjob() {
+	return new ApplyjobDAOImpl();
 }
 }

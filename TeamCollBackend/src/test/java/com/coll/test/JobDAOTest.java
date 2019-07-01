@@ -23,7 +23,7 @@ public class JobDAOTest {
 		jobDAO=(JobDAO)context.getBean("jobDAO");
 	}
 	@SuppressWarnings("deprecation")
-	
+	@Ignore
 	@Test
 	public void addjobtest() {
 		Job job=new Job();
@@ -31,7 +31,7 @@ public class JobDAOTest {
 		job.setCompanyName("tcs");
 	    job.setCTC(400000);
 	    job.setJobLocation("tambaram");
-	    job.setLastDate(new java.util.Date(2019,06,25));
+	    job.setLastDate(new java.util.Date());
 	    job.setSkills("java");
 	    assertTrue("problem in adding job",jobDAO.addJob(job));
 	}
@@ -48,10 +48,11 @@ public class JobDAOTest {
 	    	System.out.println("jobid:"+job.getJobId());
 	    }
 	}
-	@Ignore
+	
 	@Test
 	public void deletejobtest() {
-		Job job=jobDAO.getJob(1001);
+		System.out.print("deleted");
+		Job job=jobDAO.getJob(30);
 		assertTrue("problem in adding job",jobDAO.deleteJob(job));
 	}
 

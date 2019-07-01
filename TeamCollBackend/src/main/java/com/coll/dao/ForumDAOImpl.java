@@ -69,29 +69,30 @@ public class ForumDAOImpl implements ForumDAO
 		return listForums;
 	}
 
-	public boolean approveForum(int forumId) {
-		try {
-			Forum forum=getForum(forumId);
+
+	public boolean approveForum(Forum forum) {
+		try
+		{
 			forum.setStatus("A");
 			sessionFactory.getCurrentSession().update(forum);
 			return true;
 		}
 		catch(Exception e)
 		{
-			return false;
+			return false;	
 		}
 	}
 
-	public boolean rejectForum(int forumId) {
-		try {
-			Forum forum=getForum(forumId);
+	public boolean rejectForum(Forum forum) {
+		try
+		{
 			forum.setStatus("NA");
 			sessionFactory.getCurrentSession().update(forum);
 			return true;
 		}
 		catch(Exception e)
 		{
-			return false;
+			return false;	
 		}
 	}
 

@@ -30,18 +30,6 @@ public class JobDAOImpl implements JobDAO{
 		}
 	}
 
-	public boolean deleteJob(Job job) {
-		try {
-			sessionFactory.getCurrentSession().delete(job);
-			System.out.println("Job Data deleted");
-			return true;
-			}
-		catch(Exception e)
-		{
-			return false;
-		}
-	}
-
 	public Job getJob(int jobId) {
 		Session session=sessionFactory.openSession();
 		Job job=session.get(Job.class,jobId);
@@ -60,6 +48,18 @@ public class JobDAOImpl implements JobDAO{
 		try {
 			sessionFactory.getCurrentSession().save(job);
 			System.out.println("Job Data created");
+			return true;
+			}
+		catch(Exception e)
+		{
+			return false;
+		}
+	}
+
+	public boolean deleteJob(Job job) {
+		try {
+			sessionFactory.getCurrentSession().delete(job);
+			System.out.println("Job Data deleted");
 			return true;
 			}
 		catch(Exception e)

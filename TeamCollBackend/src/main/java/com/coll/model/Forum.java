@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Forum {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="forumid")
-	@SequenceGenerator(name="forumid",allocationSize=1,sequenceName="forumidseq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="forumId")
+	@SequenceGenerator(name="forumId",allocationSize=1,sequenceName="forumIdseq")
 	private int forumId;
 	private String forumName;
 	private String forumContent;

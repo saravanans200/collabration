@@ -70,6 +70,7 @@ public class BlogDAOImpl implements BlogDAO {
 		try {
 			Blog blog=getBlog(blogId);
 			blog.setLikes(blog.getLikes()+1);
+			blog.setDislikes(blog.getDislikes()-1);
 			sessionFactory.getCurrentSession().update(blog);
 			return true;
 		}
@@ -83,6 +84,7 @@ public class BlogDAOImpl implements BlogDAO {
 		try {
 			Blog blog=getBlog(blogId);
 			blog.setDislikes(blog.getDislikes()+1);
+			blog.setLikes(blog.getLikes()-1);
 			sessionFactory.getCurrentSession().update(blog);
 			return true;
 		}
